@@ -87,9 +87,11 @@ const filterContent = (event, arr) => {
   const userInput = document.querySelector('.user-input').value;
 
   const filteredArr = arr.filter((movieArr) => {
-    if (movieArr.includes(userInput)) {
-      return movieArr;
-    }
+    return movieArr.some((item) => {
+      if (item.includes(userInput)) {
+        return movieArr;
+      }
+    });
   });
 
   const content = filteredArr
