@@ -80,3 +80,30 @@ const sortYearDown = () => {
 };
 
 yearDownBtn.addEventListener('click', sortYearDown);
+
+// ! Best Rate
+
+const sortByRate = () => {
+  const sortedYearUpContent = movies.sort((a, b) => {
+    return b[5] - a[5];
+  });
+
+  const content = sortedYearUpContent
+    .map((movie) => {
+      // Get genres in Sub Array an put it into a templete literal
+      const genres = movie[4].map((genre) => `<p>${genre}</p>`).join(' ');
+      return `<article>
+                <h3>${movie[0]}</h3>
+                <p>${movie[1]}</p>
+                <p class="bold">${movie[2]}</p>
+                <p>${movie[3]}</p>
+                ${genres}
+                <p>${movie[5]}</p>
+             </article>`;
+    })
+    .join(' ');
+
+  section.innerHTML = content;
+};
+
+rateBtn.addEventListener('click', sortByRate);
