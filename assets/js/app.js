@@ -2,13 +2,12 @@ import { movies } from './movies.js';
 
 // Get DOM Elements
 const section = document.querySelector('.grid-container');
-const userInput = document.querySelector('.user-input');
-const searchBtn = document.querySelector('input[type="submit"]');
+const searchBtn = document.querySelector('form');
 const yearUpBtn = document.querySelector('.year-up-btn');
 const yearDownBtn = document.querySelector('.year-down-btn');
 const rateBtn = document.querySelector('.best-rate-btn');
 
-// ! Render Conent to Screen
+// ! Initial Render Content to Screen
 const content = movies
   .map((movie) => {
     const genres = movie[4].map((genre) => `<p>${genre}</p>`).join(' ');
@@ -26,7 +25,6 @@ const content = movies
 section.innerHTML = content;
 
 // ! Sort Functions
-
 const sortContent = (event, arr) => {
   const value = event.target.value;
   let sortedArr;
@@ -82,6 +80,37 @@ const sortContent = (event, arr) => {
   section.innerHTML = content;
 };
 
+// ! Filter Content by user input
+const filterContent = (event, arr) => {
+  event.preventDefault();
+
+  const userInput = document.querySelector('.user-input').value;
+
+  const filteredArr = arr.filter((movieArr) => {
+    if (movieArr.includes(userInput)) {
+      return movieArr;
+    }
+  });
+
+  const content = filteredArr
+    .map((movie) => {
+      const genres = movie[4].map((genre) => `<p>${genre}</p>`).join(' ');
+      return `<article>
+      <h3>${movie[0]}</h3>
+      <p>${movie[1]}</p>
+      <p class="bold">${movie[2]}</p>
+      <p>${movie[3]}</p>
+      ${genres}
+      <p>${movie[5]}</p>
+   </article>`;
+    })
+    .join(' ');
+
+  section.innerHTML = content;
+};
+
+// ! Event Listener Functions
 yearUpBtn.addEventListener('click', (event) => sortContent(event, movies));
 yearDownBtn.addEventListener('click', (event) => sortContent(event, movies));
 rateBtn.addEventListener('click', (event) => sortContent(event, movies));
+searchBtn.addEventListener('submit', (event) => filterContent(event, movies));
