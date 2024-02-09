@@ -34,7 +34,6 @@ const renderContent = () => {
 renderContent();
 
 // ! Error Message
-
 const renderError = () => {
   if (
     newArr.length === 0 ||
