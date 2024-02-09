@@ -67,6 +67,8 @@ input {
 input[type='text'] {
   width: 70%;
   border: 1px solid var(--color-green-dark);
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 input[type='submit'] {

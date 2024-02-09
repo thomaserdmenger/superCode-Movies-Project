@@ -14,6 +14,8 @@ let newArr = movies;
 const renderContent = () => {
   section.innerHTML = '';
 
+  document.querySelector('.user-input').focus();
+
   const content = newArr
     .map((movie) => {
       const genres = movie[4].map((genre) => `<p>${genre}</p>`).join(' ');
