@@ -9,10 +9,8 @@ const yearDownBtn = document.querySelector('.year-down-btn');
 const rateBtn = document.querySelector('.best-rate-btn');
 
 // ! Render Conent to Screen
-// Get content of array and put it into a template literal
 const content = movies
   .map((movie) => {
-    // Get genres in Sub Array an put it into a templete literal
     const genres = movie[4].map((genre) => `<p>${genre}</p>`).join(' ');
     return `<article>
         <h3>${movie[0]}</h3>
@@ -27,7 +25,7 @@ const content = movies
 
 section.innerHTML = content;
 
-// ! Combined Sort Functions
+// ! Sort Functions
 
 const sortContent = (event, arr) => {
   const value = event.target.value;
