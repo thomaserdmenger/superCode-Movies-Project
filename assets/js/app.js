@@ -27,83 +27,63 @@ const content = movies
 
 section.innerHTML = content;
 
-// ! Aufsteigende Sortierung - Year Up
+// ! Combined Sort Functions
 
-const sortYearUp = () => {
-  const sortedYearUpContent = movies.sort((a, b) => {
-    return a[1] - b[1];
-  });
+const sortContent = (event, arr) => {
+  const value = event.target.value;
+  let sortedArr;
+  let content;
 
-  const content = sortedYearUpContent
-    .map((movie) => {
-      // Get genres in Sub Array an put it into a templete literal
-      const genres = movie[4].map((genre) => `<p>${genre}</p>`).join(' ');
-      return `<article>
-        <h3>${movie[0]}</h3>
-        <p>${movie[1]}</p>
-        <p class="bold">${movie[2]}</p>
-        <p>${movie[3]}</p>
-        ${genres}
-        <p>${movie[5]}</p>
-     </article>`;
-    })
-    .join(' ');
-
-  section.innerHTML = content;
-};
-
-yearUpBtn.addEventListener('click', sortYearUp);
-
-// ! Absteigende Sortierung - Year Down
-
-const sortYearDown = () => {
-  const sortedYearUpContent = movies.sort((a, b) => {
-    return b[1] - a[1];
-  });
-
-  const content = sortedYearUpContent
-    .map((movie) => {
-      // Get genres in Sub Array an put it into a templete literal
-      const genres = movie[4].map((genre) => `<p>${genre}</p>`).join(' ');
-      return `<article>
-            <h3>${movie[0]}</h3>
-            <p>${movie[1]}</p>
-            <p class="bold">${movie[2]}</p>
-            <p>${movie[3]}</p>
-            ${genres}
-            <p>${movie[5]}</p>
-         </article>`;
-    })
-    .join(' ');
-
-  section.innerHTML = content;
-};
-
-yearDownBtn.addEventListener('click', sortYearDown);
-
-// ! Best Rate
-
-const sortByRate = () => {
-  const sortedYearUpContent = movies.sort((a, b) => {
-    return b[5] - a[5];
-  });
-
-  const content = sortedYearUpContent
-    .map((movie) => {
-      // Get genres in Sub Array an put it into a templete literal
-      const genres = movie[4].map((genre) => `<p>${genre}</p>`).join(' ');
-      return `<article>
-                <h3>${movie[0]}</h3>
-                <p>${movie[1]}</p>
-                <p class="bold">${movie[2]}</p>
-                <p>${movie[3]}</p>
-                ${genres}
-                <p>${movie[5]}</p>
-             </article>`;
-    })
-    .join(' ');
+  if (value === 'Year Up') {
+    sortedArr = arr.sort((a, b) => a[1] - b[1]);
+    content = sortedArr
+      .map((movie) => {
+        const genres = movie[4].map((genre) => `<p>${genre}</p>`).join(' ');
+        return `<article>
+          <h3>${movie[0]}</h3>
+          <p>${movie[1]}</p>
+          <p class="bold">${movie[2]}</p>
+          <p>${movie[3]}</p>
+          ${genres}
+          <p>${movie[5]}</p>
+       </article>`;
+      })
+      .join(' ');
+  } else if (value === 'Year Down') {
+    sortedArr = arr.sort((a, b) => b[1] - a[1]);
+    content = sortedArr
+      .map((movie) => {
+        const genres = movie[4].map((genre) => `<p>${genre}</p>`).join(' ');
+        return `<article>
+          <h3>${movie[0]}</h3>
+          <p>${movie[1]}</p>
+          <p class="bold">${movie[2]}</p>
+          <p>${movie[3]}</p>
+          ${genres}
+          <p>${movie[5]}</p>
+       </article>`;
+      })
+      .join(' ');
+  } else {
+    sortedArr = arr.sort((a, b) => b[5] - a[5]);
+    content = sortedArr
+      .map((movie) => {
+        const genres = movie[4].map((genre) => `<p>${genre}</p>`).join(' ');
+        return `<article>
+          <h3>${movie[0]}</h3>
+          <p>${movie[1]}</p>
+          <p class="bold">${movie[2]}</p>
+          <p>${movie[3]}</p>
+          ${genres}
+          <p>${movie[5]}</p>
+       </article>`;
+      })
+      .join(' ');
+  }
 
   section.innerHTML = content;
 };
 
-rateBtn.addEventListener('click', sortByRate);
+yearUpBtn.addEventListener('click', (event) => sortContent(event, movies));
+yearDownBtn.addEventListener('click', (event) => sortContent(event, movies));
+rateBtn.addEventListener('click', (event) => sortContent(event, movies));
