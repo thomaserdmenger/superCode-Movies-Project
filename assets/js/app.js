@@ -84,15 +84,14 @@ const sortContent = (event, arr) => {
 const filterContent = (event, arr) => {
   event.preventDefault();
 
-  const userInput = document.querySelector('.user-input').value;
+  const userInput = document.querySelector('.user-input').value.toLowerCase();
 
-  const filteredArr = arr.filter((movieArr) => {
-    return movieArr.some((item) => {
-      if (item.includes(userInput)) {
-        return movieArr;
-      }
-    });
-  });
+  const filteredArr = arr.filter((movieArr) =>
+    movieArr.some(
+      (item) =>
+        typeof item === 'string' && item.toLowerCase().includes(userInput)
+    )
+  );
 
   const content = filteredArr
     .map((movie) => {
