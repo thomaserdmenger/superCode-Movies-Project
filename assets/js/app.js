@@ -54,28 +54,14 @@ const filterContent = (event, arr) => {
 
   const userInput = document.querySelector('.user-input').value.toLowerCase();
 
-  const filteredArr = arr.filter((movieArr) =>
+  newArr = arr.filter((movieArr) =>
     movieArr.some(
       (item) =>
         typeof item === 'string' && item.toLowerCase().includes(userInput)
     )
   );
 
-  const content = filteredArr
-    .map((movie) => {
-      const genres = movie[4].map((genre) => `<p>${genre}</p>`).join(' ');
-      return `<article>
-      <h3>${movie[0]}</h3>
-      <p>${movie[1]}</p>
-      <p class="bold">${movie[2]}</p>
-      <p>${movie[3]}</p>
-      ${genres}
-      <p>${movie[5]}</p>
-   </article>`;
-    })
-    .join(' ');
-
-  section.innerHTML = content;
+  renderContent();
 };
 
 // ! Event Listener Functions
