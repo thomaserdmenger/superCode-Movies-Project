@@ -6,6 +6,7 @@ const searchBtn = document.querySelector('form');
 const yearUpBtn = document.querySelector('.year-up-btn');
 const yearDownBtn = document.querySelector('.year-down-btn');
 const rateBtn = document.querySelector('.best-rate-btn');
+const errorMessage = document.querySelector('.error-message');
 
 let newArr = movies;
 
@@ -31,6 +32,20 @@ const renderContent = () => {
 };
 
 renderContent();
+
+// ! Error Message
+
+const renderError = () => {
+  if (
+    newArr.length === 0 ||
+    document.querySelector('.user-input').value === ''
+  ) {
+    errorMessage.classList.add('show-error-message');
+    section.innerHTML = '';
+  } else {
+    errorMessage.classList.remove('show-error-message');
+  }
+};
 
 // ! Sort Functions
 const sortContent = (event, arr) => {
@@ -62,6 +77,7 @@ const filterContent = (event, arr) => {
   );
 
   renderContent();
+  renderError();
 };
 
 // ! Event Listener Functions
