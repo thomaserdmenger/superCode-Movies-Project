@@ -86,4 +86,13 @@ input[type='button'] {
   grid-template-columns: repeat(3, 1fr);
   width: 90%;
   gap: 0.5rem;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+article {
+  padding: 1rem;
 }
