@@ -53,24 +53,24 @@ const sortContent = (event, arr) => {
   const value = event.target.value;
 
   if (value === 'Year Up') {
-    newArr = arr.sort((a, b) => a[1] - b[1]);
+    newArr = newArr.sort((a, b) => a[1] - b[1]);
     renderContent();
   } else if (value === 'Year Down') {
-    newArr = arr.sort((a, b) => b[1] - a[1]);
+    newArr = newArr.sort((a, b) => b[1] - a[1]);
     renderContent();
   } else {
-    newArr = arr.sort((a, b) => b[5] - a[5]);
+    newArr = newArr.sort((a, b) => b[5] - a[5]);
     renderContent();
   }
 };
 
 // ! Filter Content by user input
-const filterContent = (event, arr) => {
+const filterContent = (event) => {
   event.preventDefault();
 
   const userInput = document.querySelector('.user-input').value.toLowerCase();
 
-  newArr = arr.filter((movieArr) =>
+  newArr = newArr.filter((movieArr) =>
     movieArr.some(
       (item) =>
         typeof item === 'string' && item.toLowerCase().includes(userInput)
@@ -82,7 +82,7 @@ const filterContent = (event, arr) => {
 };
 
 // ! Event Listener Functions
-yearUpBtn.addEventListener('click', (event) => sortContent(event, newArr));
-yearDownBtn.addEventListener('click', (event) => sortContent(event, movies));
-rateBtn.addEventListener('click', (event) => sortContent(event, movies));
-searchBtn.addEventListener('submit', (event) => filterContent(event, movies));
+yearUpBtn.addEventListener('click', sortContent);
+yearDownBtn.addEventListener('click', sortContent);
+rateBtn.addEventListener('click', sortContent);
+searchBtn.addEventListener('submit', filterContent);
