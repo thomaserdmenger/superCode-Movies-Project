@@ -61,10 +61,11 @@ const sortContent = (event, arr) => {
   } else {
     newArr = newArr.sort((a, b) => b[5] - a[5]);
     renderContent();
+    g;
   }
 };
 
-// ! Filter Content by user input
+// ! Filter Content by user inputgi
 const filterContent = (event) => {
   event.preventDefault();
 
