@@ -70,12 +70,19 @@ const filterContent = (event) => {
 
   const userInput = document.querySelector('.user-input').value.toLowerCase();
 
-  newArr = newArr.filter((movieArr) =>
-    movieArr.some(
+  newArr = newArr.filter((movieArr) => {
+    const stringMatch = movieArr.some(
       (item) =>
         typeof item === 'string' && item.toLowerCase().includes(userInput)
-    )
-  );
+    );
+
+    const genreMatch = movieArr[4].some(
+      (genre) =>
+        typeof genre === 'string' && genre.toLowerCase().includes(userInput)
+    );
+
+    return stringMatch || genreMatch;
+  });
 
   renderContent();
   renderError();
