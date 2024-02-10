@@ -61,7 +61,6 @@ const sortContent = (event, arr) => {
   } else {
     newArr = newArr.sort((a, b) => b[5] - a[5]);
     renderContent();
-    g;
   }
 };
 
