@@ -177,7 +177,7 @@ h2 {
   color: var(--color-white);
   text-transform: uppercase;
   cursor: pointer;
-  width: 30%;
+  width: 100%;
   padding: 1rem;
 }
 
@@ -205,13 +205,13 @@ h2 {
     width: 70%;
   }
 
-  form div {
+  .form-filters div {
     display: flex;
     flex-wrap: wrap;
   }
 
-  input[type='text'],
-  input[type='submit'] {
+  .form-filters input[type='text'],
+  .form-filters input[type='submit'] {
     width: 100%;
   }
 }
