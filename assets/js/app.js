@@ -7,9 +7,10 @@ const yearUpBtn = document.querySelector('.year-up-btn');
 const yearDownBtn = document.querySelector('.year-down-btn');
 const rateBtn = document.querySelector('.best-rate-btn');
 const errorMessage = document.querySelector('.error-message');
+const addMovieForm = document.querySelector('.form-new-movie');
+const showMovieForm = document.querySelector('.new-movie div');
 const openedEye = document.querySelector('.opened-eye');
 const closedEye = document.querySelector('.closed-eye');
-const addMovieForm = document.querySelector('.form-new-movie');
 
 let newArr = [...movies];
 
@@ -94,20 +95,23 @@ const filterContent = (event) => {
   document.querySelector('.user-input').value = '';
 };
 
-// ! Add Movies
-
-const showContent = () => {
-  openedEye.classList.add('hide-icon');
-  closedEye.classList.remove('hide-icon');
-  addMovieForm.classList.add('show-form');
-  addMovieForm.classList.remove('form-new-movie');
+// ! Toggle Add Movies Section
+const toggleContent = () => {
+  openedEye.classList.toggle('hide-icon');
+  closedEye.classList.toggle('hide-icon');
+  addMovieForm.classList.toggle('form-new-movie');
+  addMovieForm.classList.toggle('show-form');
 };
 
-const hideContent = () => {
-  openedEye.classList.remove('hide-icon');
-  closedEye.classList.add('hide-icon');
-  addMovieForm.classList.add('form-new-movie');
-  addMovieForm.classList.renmove('show-form');
+// ! Add Movies to Database
+
+const addMovie = (event) => {
+  event.preventDefault();
+
+  const userInput = document.querySelector('#input-new-movie').value;
+  // newArr.unshift([userInput]);
+  // console.table(newArr);
+  // renderContent();
 };
 
 // ! Event Listener Functions
@@ -115,5 +119,5 @@ yearUpBtn.addEventListener('click', sortContent);
 yearDownBtn.addEventListener('click', sortContent);
 rateBtn.addEventListener('click', sortContent);
 searchBtn.addEventListener('submit', filterContent);
-openedEye.addEventListener('click', showContent);
-closedEye.addEventListener('click', hideContent);
+addMovieForm.addEventListener('submit', addMovie);
+showMovieForm.addEventListener('click', toggleContent);
