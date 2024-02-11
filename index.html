@@ -14,7 +14,29 @@
     <div class="wrapper">
       <h1>Movies for You</h1>
       <h2>The best MovieDB</h2>
-      <form>
+      <article class="new-movie">
+        <div>
+          <p>Create a new Movie</p>
+          <img
+            class="opened-eye"
+            src="./assets/images/show.png"
+            alt="show icon" />
+          <img
+            class="closed-eye hide-icon"
+            src="./assets/images/hide.png"
+            alt="hide icon" />
+        </div>
+        <form class="form-new-movie">
+          <input
+            type="text"
+            name="input-new-movie"
+            id="input-new-movie" />
+          <input
+            type="submit"
+            value="Add Content" />
+        </form>
+      </article>
+      <form class="form-filters">
         <div>
           <input
             type="text"

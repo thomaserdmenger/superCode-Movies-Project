@@ -20,6 +20,10 @@ html {
   font-family: Inter;
 }
 
+img {
+  max-width: 100%;
+}
+
 .wrapper {
   min-height: 100vh;
   display: flex;
@@ -39,7 +43,7 @@ h2 {
   margin-block-end: 2rem;
 }
 
-form {
+.form-filters {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,13 +53,14 @@ form {
   margin-block-end: 2rem;
 }
 
-form div {
+.form-filters div {
   display: flex;
   width: 100%;
   gap: 0.5rem;
 }
 
-input {
+.form-filters input,
+.show-form input {
   padding: 0.7rem;
   border-radius: 25px;
   border: none;
@@ -64,25 +69,29 @@ input {
   font-weight: 600;
 }
 
-input[type='text'] {
+.form-filters input[type='text'],
+.show-form input[type='text'] {
   width: 70%;
   border: 1px solid var(--color-green-dark);
   font-size: 0.9rem;
   text-align: center;
 }
 
-input[type='submit'] {
+.form-filters input[type='submit'],
+.show-form input[type='submit'] {
   width: 30%;
   background-color: var(--color-green-dark);
   color: var(--color-white);
   text-transform: uppercase;
+  cursor: pointer;
 }
 
-input[type='button'] {
+.form-filters input[type='button'] {
   width: 100%;
   background-color: var(--color-gray);
   border: 1px solid var(--color-green-dark);
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .grid-container {
@@ -93,11 +102,11 @@ input[type='button'] {
   text-align: center;
 }
 
-h3 {
+.grid-container h3 {
   font-size: 1.1rem;
 }
 
-article {
+.grid-container article {
   padding: 1.5rem 0.5rem;
   background-color: var(--color-green-light);
   border-radius: 10px;
@@ -123,6 +132,41 @@ article {
 
 .show-error-message {
   display: block;
+}
+
+.new-movie {
+  width: 60%;
+  margin-block-end: 2rem;
+}
+
+.new-movie div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  align-items: center;
+}
+
+.new-movie img {
+  cursor: pointer;
+  width: 25px;
+}
+
+.hide-icon {
+  display: none;
+}
+
+.show-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0.5rem;
+  margin-block-end: 2rem;
+  margin-block-start: 1rem;
+}
+
+.form-new-movie {
+  display: none;
 }
 
 /* ! Tablet */
