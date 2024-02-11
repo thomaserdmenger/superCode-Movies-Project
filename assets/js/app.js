@@ -8,7 +8,7 @@ const yearDownBtn = document.querySelector('.year-down-btn');
 const rateBtn = document.querySelector('.best-rate-btn');
 const errorMessage = document.querySelector('.error-message');
 
-let newArr = movies;
+let newArr = [...movies];
 
 // ! Initial Render Content to Screen
 const renderContent = () => {
@@ -53,13 +53,15 @@ const sortContent = (event, arr) => {
   const value = event.target.value;
 
   if (value === 'Year Up') {
-    newArr = newArr.sort((a, b) => a[1] - b[1]);
+    newArr = movies.sort((a, b) => a[1] - b[1]);
     renderContent();
+    console.table(movies);
+    console.table(newArr);
   } else if (value === 'Year Down') {
-    newArr = newArr.sort((a, b) => b[1] - a[1]);
+    newArr = movies.sort((a, b) => b[1] - a[1]);
     renderContent();
   } else {
-    newArr = newArr.sort((a, b) => b[5] - a[5]);
+    newArr = movies.sort((a, b) => b[5] - a[5]);
     renderContent();
   }
 };
@@ -70,7 +72,7 @@ const filterContent = (event) => {
 
   const userInput = document.querySelector('.user-input').value.toLowerCase();
 
-  newArr = newArr.filter((movieArr) => {
+  newArr = movies.filter((movieArr) => {
     const stringMatch = movieArr.some(
       (item) =>
         typeof item === 'string' && item.toLowerCase().includes(userInput)
