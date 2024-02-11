@@ -88,6 +88,7 @@ const filterContent = (event) => {
 
   renderContent();
   renderError();
+  document.querySelector('.user-input').value = '';
 };
 
 // ! Event Listener Functions
