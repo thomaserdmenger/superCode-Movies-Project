@@ -53,14 +53,12 @@ const renderError = () => {
 };
 
 // ! Sort Functions
-const sortContent = (event, arr) => {
+const sortContent = (event) => {
   const value = event.target.value;
 
   if (value === 'Year Up') {
     newArr = movies.sort((a, b) => a[1] - b[1]);
     renderContent();
-    console.table(movies);
-    console.table(newArr);
   } else if (value === 'Year Down') {
     newArr = movies.sort((a, b) => b[1] - a[1]);
     renderContent();
