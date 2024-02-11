@@ -108,10 +108,18 @@ const toggleContent = () => {
 const addMovie = (event) => {
   event.preventDefault();
 
-  const userInput = document.querySelector('#input-new-movie').value;
-  // newArr.unshift([userInput]);
-  // console.table(newArr);
-  // renderContent();
+  const movieTitle = document.querySelector('#input-new-movie').value;
+  const movieYear = document.querySelector('#movie-year').value;
+  const movieRegisseur = document.querySelector('#movie-regisseur').value;
+  const movieDuration = document.querySelector('#movie-duration').value;
+  const movieGenre = document.querySelector('#movie-genre').value;
+
+  newArr = [
+    [movieTitle, movieYear, movieRegisseur, movieDuration, [movieGenre], ''],
+    ...newArr,
+  ];
+
+  renderContent();
 };
 
 // ! Event Listener Functions
