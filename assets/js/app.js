@@ -112,12 +112,27 @@ const addMovie = (event) => {
   const movieDuration = document.querySelector('#movie-duration').value;
   const movieGenre = document.querySelector('#movie-genre').value;
 
+  if (
+    movieTitle === '' ||
+    movieYear === '' ||
+    movieRegisseur === '' ||
+    movieDuration === '' ||
+    movieGenre === ''
+  )
+    return;
+
   newArr = [
     [movieTitle, movieYear, movieRegisseur, movieDuration, [movieGenre], ''],
     ...newArr,
   ];
 
   renderContent();
+
+  document.querySelector('#input-new-movie').value = '';
+  document.querySelector('#movie-year').value = '';
+  document.querySelector('#movie-regisseur').value = '';
+  document.querySelector('#movie-duration').value = '';
+  document.querySelector('#movie-genre').value = '';
 };
 
 // ! Event Listener Functions
